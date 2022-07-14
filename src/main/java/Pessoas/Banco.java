@@ -40,6 +40,6 @@ public class Banco{
         System.out.println(contaum.getSaldoConta());
         System.out.println(contadois.getSaldoConta());
         System.out.println(listaConta.size());
-        System.out.println(agenciaBancaria.getListaClientes().add(cliente));
+        //System.out.println(agenciaBancaria.getListaClientes().add(cliente));
     }
 }

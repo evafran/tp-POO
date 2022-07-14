@@ -18,9 +18,10 @@ public class Funcionario extends Pessoa {
        }
     
     public void adicionarCliente(int id, String nome, String cpf, String dataNascimento, String endereco,
-            String email,String telefone, Agencia agenciaBancaria){
+        String email, String telefone, Agencia agenciaBancaria){
+        
         Cliente cliente = new Cliente(id, nome, cpf, dataNascimento, endereco, email, telefone);
-
+   
         agenciaBancaria.getListaClientes().add(cliente);
     }
     
