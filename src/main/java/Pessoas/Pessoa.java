@@ -9,20 +9,20 @@ package Pessoas;
  *
  * @author eva
  */
-public abstract  class Pessoa {
+public abstract  class Pessoa { 
     private int id;
-    private String nome;
+    private String nome;     
     private String cpf;
-    private String dataNascimento;
-    private String endereco;
+    private String dataNascimento;     //criando a sperclasse abstrata pesssoa com todos atributos private
+    private String endereco;           //controle de acesso dos dados 
     private String email;
     private String telefone;
-    
+    //construtor com sete parâmentros
     public Pessoa(int id, String nome, String cpf, String dataNascimento,
             String endereco,String email, String telefone)
     {
         this.id = id;
-        this.nome = nome;
+        this.nome = nome; //
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
@@ -96,12 +96,12 @@ public abstract  class Pessoa {
     }
     
 
-    public abstract void AlterarEndereco();
-    
+    public abstract void AlterarEndereco(); //método abstrato 
+ 
     @Override
     public String toString(){
     
-        return String.format(super.toString());
+        return String.format(super.toString());  //metodo sobreescrito
     }
 }
 

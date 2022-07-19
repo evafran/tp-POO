@@ -4,38 +4,46 @@
  */
 package Pessoas;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author eva
  */
-public class Funcionario extends Pessoa {
+public class Funcionario extends Pessoa implements Listas{
     //private int idFuncionario;
+    //Agencia funcionario = new Agencia();
+    
     public Funcionario(int id, String nome, String cpf, String dataNascimento,
                String endereco, String email, String telefone){
 
        super(id,  nome, cpf, dataNascimento, endereco, email, telefone);
               
        }
-    
+    //métodod para funcionário adicionar um novo cliente 
     public void adicionarCliente(int id, String nome, String cpf, String dataNascimento, String endereco,
-        String email, String telefone, Agencia agenciaBancaria){
+        String email, String telefone, Funcionario funcionario, Agencia a){
         
         Cliente cliente = new Cliente(id, nome, cpf, dataNascimento, endereco, email, telefone);
-   
-        agenciaBancaria.getListaClientes().add(cliente);
+        listaClientes.add(cliente);
+        System.out.println("cliente adicionado com sucesso!");
+        
     }
     
-    public void criarConta(int idConta, String tipoConta, int agencia, int numeroConta, double saldoConta, Cliente cliente, Agencia agenciaBancaria){
+    public void criarConta(int idConta, String tipoConta, int agencia, int numeroConta, double saldoConta, Cliente cliente, Funcionario funcionario, Agencia a){
         Conta conta = new Conta(idConta, tipoConta, agencia, numeroConta, saldoConta, cliente);
-        agenciaBancaria.getListaContas().add(conta);
+        listaContas.add(conta);
+        System.out.println("conta adicionado com sucesso!");
     }
   
-    public void removeCliente(Cliente cliente, Agencia agenciaBancaria){
-        agenciaBancaria.getListaClientes().remove(cliente);
+    public void removeCliente(Cliente cliente, Funcionario funcionario, Agencia a){
+        listaClientes.remove(cliente);
+        System.out.println("cliente removido com sucesso!");
     }
     
-    public void removerConta(Conta conta,Agencia agenciaBancaria){
-        agenciaBancaria.getListaContas().remove(conta);
+    public void removerConta(Conta conta,Funcionario funcionario, Agencia a){
+        listaContas.remove(conta);
+        System.out.println("conta removida com sucesso!");
     }  
 
  // método para exibição dos dados do funcionário

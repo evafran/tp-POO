@@ -8,11 +8,16 @@ import java.util.LinkedList;
  *
  * @author eva
  */
+
 public class Agencia {
     
    private LinkedList listaContas;
    private LinkedList listaClientes;
    private LinkedList listaFuncionarios;
+
+
+   
+   
    
    public LinkedList getListaContas(){
        return listaContas;
@@ -41,11 +46,11 @@ public class Agencia {
    
    }
 
-    Object setListaClientes() {
+    /*Object setListaClientes() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     void setListaClientes(Cliente cliente) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    }*/
 }

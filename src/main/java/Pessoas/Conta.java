@@ -10,10 +10,10 @@ package Pessoas;
  */
 public class Conta {
 
-    private int idConta;
+    private int idConta;  //criada a classe conta e o construtor com  sete  parâmentros.
     private String tipoConta;
     private int agencia;
-    private int numeroConta;
+    private int numeroConta;  
     private double saldoConta;
     private Cliente cliente;
     
@@ -23,7 +23,7 @@ public class Conta {
         this.idConta = idConta;
         this.tipoConta = tipoConta;
         this.agencia = agencia;
-        this.numeroConta = numeroConta;
+        this.numeroConta = numeroConta; 
         this.saldoConta = saldoConta;
         this.cliente = cliente;
     
@@ -31,8 +31,8 @@ public class Conta {
     }
     
     public int getIdConta(){
-
-        return idConta;
+                              //os getters e setters permite o acesso a classe conta e os seus objetos.
+        return idConta;      
     }
     public String getTipoConta(){
         return tipoConta;
@@ -81,24 +81,24 @@ public class Conta {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+     //método para o cliente sacar o dinheiro,dentro do parâmentro passa o valor 
     public void sacarDinheiro(double valor){
-          if(this.saldoConta >= valor){
-              this.saldoConta = valor;
+          if(this.saldoConta >= valor){    //a condicão é para verificar se o valor é maior  ou igual o saldo
+              this.saldoConta -= valor;
 
-          }else{
+          }else{    //caso o saldo é menor que o valor de saque,aparecerá a msg.
 
               System.out.println("saldo insufiente");
           }
 
-    }
+    }//método para  transferir dinheiro tendo dois paramentros a classe Conta e o objeto da classe e o valor
     public void trasferirDinheiro(Conta conta, double valor){
       if(this.saldoConta>= valor){
-         this.saldoConta -= valor;
+         this.saldoConta -= valor;   // o if é a condicional para verificar  se o valor for maior ou igual o saldo 
          conta.saldoConta += valor;
 
       } else{
-          System.out.println("saldo insufiente");
+          System.out.println("saldo insufiente"); //caso não seja aparecerá está msg
       }
 
 
@@ -111,7 +111,7 @@ public class Conta {
 @Override
 public String toString(){
 
-return String.format( super.toString());
+return String.format( super.toString()); //método tosTRING sobreescrito.
 }
 }
     
