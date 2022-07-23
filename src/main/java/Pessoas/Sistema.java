@@ -3,39 +3,104 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Pessoas;
-import java.util.LinkedList;
 
 /**
  *
  * @author eva
- *///classe Sistema para criar lista dinâmica para novas contas e clientes e o vetor 
-//estático pra guardar os 25 colaboradores do banco.
-public class Sistema{
-   //vetor estático 
-    Funcionario[] funcionario = new Funcionario[25];
+ 
+*/
+public class Sistema implements Listas{
     
-    //lista dinâmica da estrutura de classes da interfacecollection  inseri ou remove 
+    private static int countStatic; //variável static
+    protected int  countProtected;
     
-    private LinkedList<Agencia> agencias = new LinkedList<Agencia>();
-    private LinkedList< Cliente> clientes = new LinkedList<Cliente>();
-    private LinkedList< Conta> contas = new LinkedList<Conta>();
-    private LinkedList<Funcionario> funcionarios = new LinkedList<Funcionario>();
-    
-   //usando o get para retonar o valor do atributo e controlando o acesso de manipulação dos dados.
-    
-    public LinkedList<Agencia> getAgencias(){
-    
-        return agencias;
+    //métodod para funcionário adicionar um novo cliente 
+    public void adicionarCliente(int id, String nome, String cpf, String dataNascimento, String endereco,
+        String email, String telefone, Sistema s){
+        
+        Cliente cliente = new Cliente(id, nome, cpf, dataNascimento, endereco, email, telefone,s);
+        listaClientes.add(cliente);
+        
+        System.out.println("cliente adicionado com sucesso!");
+        System.out.println(getCount());
+        System.out.println(countProtected);
     }
-    public LinkedList<Cliente > getClientes(){
     
-        return clientes;
+    public  static void addCount(){
+        countStatic+=1;  
+       //toda vez que um cliente for instanciado ele vai adicionar + 1 ao contador. 
     }
-    public LinkedList<Conta> getContas(){
+     
+    public static void subCount(){
+        countStatic-=1;  
+        
+    }
+    public static  int getCount(){
+        
+        return countStatic;//retornar o contador estático da quantidades de clientes
+    }
     
-        return contas;
+    
+    public void editarCliente(int id, String nome, String cpf, String dataNascimento, String endereco,
+          String email, String telefone, Cliente cliente){
+
+        listaClientes.remove(cliente);
+        cliente.setId(id);
+        cliente.setNome(nome);
+        cliente.setCpf(cpf);
+        cliente.setDataNascimento(dataNascimento);
+        cliente.setEndereco(endereco);
+        cliente.setEmail(email);
+        cliente.setTelefone(telefone);
+        listaClientes.add(cliente);
+        System.out.println("dados atualizados: ");
+        cliente.returnInfos();
+        
     }
-    public LinkedList<Funcionario> getFuncionarios(){
-        return funcionarios;
+    public void removeCliente(Cliente cliente){
+        listaClientes.remove(cliente);
+        subCount();
+        System.out.println("cliente removido com sucesso!");
     }
+    
+    //métodos para adiconar, editar e remover e funcionários
+    public void adicionarAdm(int idAdm, int id, String nome, String cpf, String dataNascimento, String endereco, String email, String telefone){
+      
+        Administrador adm = new Administrador( idAdm,  id,  nome,cpf, dataNascimento, endereco, email,telefone);
+        
+        listaAdm.add(adm);
+        System.out.println("adicionado com sucesso: ");
+        adm.returnInfos();
+        
+    }
+    public void editarAdm(int idAdm, int id, String nome, String cpf, String dataNascimento, String endereco, String email, String telefone,Administrador adm){
+        
+        listaAdm.remove(adm);
+        adm.setIdAdm(idAdm);
+        adm.setId(id);
+        adm.setNome(nome);
+        adm.setCpf(cpf);
+        adm.setDataNascimento(dataNascimento);
+        adm.setEndereco(endereco);
+        adm.setEmail(email);
+        adm.setTelefone(telefone);
+        listaAdm.add(adm);
+        System.out.println("editado com sucesso! ");
+        adm.returnInfos();
+        
+    }
+    
+    public void removerAdm(Administrador adm){
+        
+        listaAdm.remove(adm);
+        System.out.println("removido com sucesso! ");
+        
+    }
+    @Override
+    public String toString(){
+
+        return String.format( super.toString()); //método tosTRING sobreescrito.
+    }
+
 }
+

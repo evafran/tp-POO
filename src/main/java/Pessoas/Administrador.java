@@ -9,12 +9,11 @@ package Pessoas;
  */
 public class Administrador extends Funcionario implements Listas{
     private int idAdm;
-    private Sistema sistema;
 
-    public Administrador(int idAdm, Sistema sistema, int id, String nome, String cpf, String dataNascimento, String endereco, String email, String telefone) {
+    public Administrador(int idAdm, int id, String nome, String cpf, String dataNascimento, String endereco, String email, String telefone) {
         super(id, nome, cpf, dataNascimento, endereco, email, telefone);
         this.idAdm = idAdm;
-        this.sistema = sistema;
+       
     }
 
     public int getIdAdm() {
@@ -25,27 +24,57 @@ public class Administrador extends Funcionario implements Listas{
         this.idAdm = idAdm;
     }
 
-    public Sistema getSistema() {
-        return sistema;
-    }
-
-    public void setSistema(Sistema sistema) {
-        this.sistema = sistema;
-    }
+  
+    
    
     public void adicionarFuncionario( int id, String nome, String cpf, String dataNascimento,
-               String endereco, String email, String telefone ){
+               String endereco, String email, String telefone, int i ){
         
         
         
-        Funcionario funcionario = new Funcionario(id,nome,cpf,dataNascimento,endereco,email,telefone);
+        Funcionario f = new Funcionario(id,nome,cpf,dataNascimento,endereco,email,telefone);
     
-        sistema.getFuncionarios().add(funcionario);
+        colaboradores[i] = f;
+        listaFuncionarios.add(f);
+        
           
          
     }
-    public void removerFuncionario(int id){
-        sistema.getFuncionarios().remove(id);
+    
+    public void editarFuncionario(int id, String nome, String cpf, String dataNascimento,
+               String endereco, String email, String telefone, Funcionario funcionario){
+        
+        listaFuncionarios.remove(funcionario);
+        funcionario.setId(id);
+        funcionario.setNome(nome);
+        funcionario.setCpf(cpf);
+        funcionario.setDataNascimento(dataNascimento);
+        funcionario.setEndereco(endereco);
+        funcionario.setEmail(email);
+        funcionario.setTelefone(telefone);
+        listaFuncionarios.add(funcionario);
+        System.out.println("dados atualizados com sucesso!");
+        funcionario.returnInfos();
+        
+    }
+            
+    public void removerFuncionario(Funcionario f){
+        listaFuncionarios.remove(f);
+        System.out.printf("funcionário %s removido com sucesso: \n", f.getNome());
+        
+        
+    }
+    @Override
+    public void returnInfos(){
+        
+        System.out.println("idAdm: " +getIdAdm());
+        System.out.println("id: " + Administrador.super.getId());
+        System.out.println("nome: " + Administrador.super.getNome());
+        System.out.println("cpf:  "  + Administrador.super.getCpf());
+        System.out.println("data de nascimento: " +Administrador.super.getDataNascimento());
+        System.out.println(" endereço: "  +Administrador.super.getEndereco());
+        System.out.println(" email:  "  +Administrador.super.getEmail());
+        System.out.println("telefone:  " +Administrador.super.getTelefone());
     }
     
     @Override

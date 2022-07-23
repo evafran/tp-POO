@@ -5,7 +5,6 @@
 package Pessoas;
 
 import java.util.LinkedList;
-//import java.util.ArrayList;
 /**
  *
  * @author eva
@@ -16,8 +15,9 @@ public interface Listas {
     LinkedList<Cliente> listaClientes = new LinkedList<>();
     LinkedList< Conta> listaContas = new LinkedList<>();
     LinkedList<Funcionario> listaFuncionarios = new LinkedList<>();
+    LinkedList<Administrador> listaAdm= new LinkedList<>();
     Funcionario[] colaboradores = new Funcionario[25];
-    //ArrayList<Funcionario> colaboradores = new ArrayList<>();       
+    //ArrayList<Funcionario> colaboradores = new ArrayList<>();
             
             
 }
