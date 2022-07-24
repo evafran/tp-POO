@@ -1,0 +1,39 @@
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'1.8'
+-sourcepath
+'/home/eva/NetBeansProjects/sistemabancario/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2022. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'sistemabancario 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' '/home/eva/NetBeansProjects/sistemabancario/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'sistemabancario 1.0-SNAPSHOT API'
+Pessoas
+/home/eva/NetBeansProjects/sistemabancario/src/main/java = 1657674645000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/stylesheet.css = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/index-all.html = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/allclasses-frame.html = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/script.js = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/deprecated-list.html = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/index.html = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/overview-tree.html = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/package-list = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/constant-values.html = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/allclasses-noframe.html = 1658690096000
+/home/eva/NetBeansProjects/sistemabancario/target/site/apidocs/help-doc.html = 1658690096000

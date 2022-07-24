@@ -4,6 +4,9 @@
  */
 package Pessoas;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 /**
  *
  * @author eva
@@ -17,23 +20,25 @@ public class Conta {
     private double saldoConta;
     private Cliente  cliente;
     private String senha;
+    private ArrayList<String> extratosBancario = new ArrayList<>();
     
-    
-    public Conta(int idConta, String tipoConta, int agencia, int numeroConta, double saldoConta, Cliente cliente, String senha){
+    //construtor
+    public Conta(int idConta, String tipoConta, int agencia, int numeroConta, double saldoConta,
+            String senha,Agencia a){
     
         this.idConta = idConta;
         this.tipoConta = tipoConta;
         this.agencia = agencia;
         this.numeroConta = numeroConta; 
         this.saldoConta = saldoConta;
-        this.cliente = cliente;
         this.senha = senha;
-    
+        a.setListConta(this);
     
     }
-    
+
+    //Os getters e setters permite o acesso a classe conta e os seus atributos.
     public int getIdConta(){
-                              //os getters e setters permite o acesso a classe conta e os seus objetos.
+                           
         return idConta;      
     }
     public String getTipoConta(){
@@ -51,14 +56,12 @@ public class Conta {
  
         return saldoConta;
     
-
-
-}
+    }
     public Cliente getCliente(){
 
         return cliente;
 
-}
+    }
 
     public void setIdConta(int idConta) {
         this.idConta = idConta;
@@ -92,11 +95,19 @@ public class Conta {
         this.senha = senha;
     }
     
-     //método para o cliente sacar o dinheiro,dentro do parâmentro passa o valor 
+    //método para o cliente sacar o dinheiro,dentro do parâmentro passa o valor 
     public void sacarDinheiro(double valor){
+        
           if(this.saldoConta >= valor){    //a condicão é para verificar se o valor é maior  ou igual o saldo
               this.saldoConta -= valor;
-              System.out.println("saldo atual é de R$" + this.saldoConta);
+              LocalDate dataSaque = LocalDate.now();
+              String extrato;
+              extrato = "\nData de saque: " + dataSaque.toString()+
+                        "\nTipo de transação: débito/saque" +
+                        "\nSaldo atual é R$" + Double.toString(saldoConta);
+              
+              System.out.println(extrato);
+              extratosBancario.add(extrato);
 
           }else{    //caso o saldo é menor que o valor de saque,aparecerá a msg.
 
@@ -109,50 +120,91 @@ public class Conta {
     public void depositarDinheiro(double valor){
         
         this.saldoConta += valor;
-        System.out.println("saldo atual é de R$" + this.saldoConta);
+        LocalDate dataDeposito = LocalDate.now();
+        String extrato;
+        extrato = "\n data de depósito: " + dataDeposito.toString() +
+                  "\n tipo de transação crédito/transferência: " +
+                  "\n saldo atual R$" + Double.toString(getSaldoConta());
+        
+        System.out.println(extrato);
+        extratosBancario.add(extrato);
     }
+    
     //método para  transferir dinheiro tendo dois paramentros a classe Conta e o objeto da classe e o valor
-    public void trasferirDinheiro(double valor,Conta conta){
-      if(this.saldoConta>= valor){
-         this.saldoConta -= valor;   // o if é a condicional para verificar  se o valor for maior ou igual o saldo 
-         double saldoNovo = conta.getSaldoConta() + valor;
-         conta.setSaldoConta(saldoNovo);
-         
-          System.out.println("saldo atual é de R$" +  this.saldoConta);
+    public void transferirDinheiro(double valor,Conta conta){
+        
+        if(this.saldoConta>= valor){
+            this.saldoConta -= valor;   // o if é a condicional para verificar  se o valor for maior ou igual o saldo 
+            double saldoNovo = conta.getSaldoConta() + valor;
+            conta.setSaldoConta(saldoNovo);
+            LocalDate dataTransferencia = LocalDate.now();
+            String extrato;
+            extrato = "\n data de transferência: " + dataTransferencia.toString() +
+                    "\n tipo de transação débito/transferência : " +
+                    "\n saldo atual R$" + Double.toString(saldoConta);
+            
+            extratosBancario.add(extrato);
+            System.out.println(extrato);
+            
+            String extrato2;
+            extrato2 = "\n data de transferência: " + dataTransferencia.toString() +
+                       "\n tipo de transação crédito/transferência : " +
+                       "\n saldo atual R$" + Double.toString(conta.getSaldoConta());
+            
+            conta.addExtrato(extrato2);
+          //código  para conta em que será créditado 
           
-      } else{
-          System.out.println("saldo insufiente"); //caso não seja aparecerá está msg
-      }
+        } else{
+              System.out.println("saldo insufiente"); //caso não seja aparecerá está msg
+        }
    
    }
    
-    public void efetuarPagamentos(double valor){
+    public void efetuarPagamentos(double valor){//método de efetuar pagamento e verificar extrato,saldo da conta
+        
         if(this.saldoConta >= valor){
             this.saldoConta -= valor;
+            LocalDate dataTransacao = LocalDate.now();
             
+            String extrato;
+            extrato = "\nData de transação: " + dataTransacao.toString() + 
+                    "\nTipo de transação: débito/pagamento" +
+                    "\nO saldo é R$" + Double.toString(getSaldoConta());
+            
+            System.out.println(extrato);
+            extratosBancario.add(extrato);
             
         }else{
             
             System.out.println("saldo insuficente");
         }
         
-        
-        
     }
    
             
     public void exibirInfoConta(){
-        System.out.println("idConta :" + getIdConta()); 
-        System.out.println("tipoConta :" + getTipoConta());
-        System.out.println("agencia : "  + getAgencia());
+        
+        System.out.println("idConta: " + getIdConta()); 
+        System.out.println("tipoConta: " + getTipoConta());
+        System.out.println("agencia: "  + getAgencia());
         System.out.println("numeroConta: " + getNumeroConta());
-        System.out.println("saldoConta : " + getSaldoConta());
-        System.out.println("cliente :"  + getCliente());
-        
-        
-        
-        
+        System.out.println("saldoConta: " + getSaldoConta());
+        System.out.println("cliente:"  + getCliente());    
     }
+    
+    public void exibirExtrato(){
+        System.out.println("\n=-=-=-=-=-= Extrato Bancário =-=-=-=-=-=");
+        for(int i=0;i<extratosBancario.size();i++){
+            System.out.println(extratosBancario.get(i));
+            System.out.println("\n=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+        }
+    }
+    
+    public void addExtrato(String s){
+        
+        extratosBancario.add(s);
+    }
+    
     @Override
     public String toString(){
 

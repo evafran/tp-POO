@@ -8,14 +8,18 @@ package Pessoas;
  * @author eva
  */
 public class Administrador extends Funcionario implements Listas{
+    
     private int idAdm;
-
-    public Administrador(int idAdm, int id, String nome, String cpf, String dataNascimento, String endereco, String email, String telefone) {
-        super(id, nome, cpf, dataNascimento, endereco, email, telefone);
+    
+    //construtor
+    public Administrador(int idAdm, int id, String nome, String cpf, String dataNascimento, String endereco, String email, String telefone, Agencia a) {
+        super(id, nome, cpf, dataNascimento, endereco, email, telefone, a);
+        
         this.idAdm = idAdm;
-       
+        a.setListAdm(this);
     }
 
+    //getters e setters
     public int getIdAdm() {
         return idAdm;
     }
@@ -24,21 +28,14 @@ public class Administrador extends Funcionario implements Listas{
         this.idAdm = idAdm;
     }
 
-  
-    
-   
+    //métodos para  adicionar,editar e remover funcionários
     public void adicionarFuncionario( int id, String nome, String cpf, String dataNascimento,
-               String endereco, String email, String telefone, int i ){
+               String endereco, String email, String telefone, int i, Agencia a ){
         
-        
-        
-        Funcionario f = new Funcionario(id,nome,cpf,dataNascimento,endereco,email,telefone);
-    
+        Funcionario f = new Funcionario(id,nome,cpf,dataNascimento,endereco,email,telefone,a);
         colaboradores[i] = f;
         listaFuncionarios.add(f);
-        
-          
-         
+             
     }
     
     public void editarFuncionario(int id, String nome, String cpf, String dataNascimento,
@@ -54,27 +51,29 @@ public class Administrador extends Funcionario implements Listas{
         funcionario.setTelefone(telefone);
         listaFuncionarios.add(funcionario);
         System.out.println("dados atualizados com sucesso!");
-        funcionario.returnInfos();
+        funcionario.retornarInfos();
         
     }
             
-    public void removerFuncionario(Funcionario f){
+    public void removerFuncionario(Funcionario f, Agencia a){
+        
         listaFuncionarios.remove(f);
+        a.removerFuncionario(f);
         System.out.printf("funcionário %s removido com sucesso: \n", f.getNome());
-        
-        
+          
     }
+    
     @Override
-    public void returnInfos(){
+    public void retornarInfos(){
         
-        System.out.println("idAdm: " +getIdAdm());
+        System.out.println("idAdm: " + getIdAdm());
         System.out.println("id: " + Administrador.super.getId());
         System.out.println("nome: " + Administrador.super.getNome());
-        System.out.println("cpf:  "  + Administrador.super.getCpf());
-        System.out.println("data de nascimento: " +Administrador.super.getDataNascimento());
-        System.out.println(" endereço: "  +Administrador.super.getEndereco());
-        System.out.println(" email:  "  +Administrador.super.getEmail());
-        System.out.println("telefone:  " +Administrador.super.getTelefone());
+        System.out.println("cpf: " + Administrador.super.getCpf());
+        System.out.println("data de nascimento: " + Administrador.super.getDataNascimento());
+        System.out.println("endereço: " + Administrador.super.getEndereco());
+        System.out.println("email: " + Administrador.super.getEmail());
+        System.out.println("telefone: " + Administrador.super.getTelefone());
     }
     
     @Override

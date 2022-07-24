@@ -11,13 +11,14 @@ import java.util.LinkedList;
  */
 public interface Listas {
     
+    //listas para armazenar objetos das classes
+    
     LinkedList<Agencia> listaAgencias = new LinkedList<>();
     LinkedList<Cliente> listaClientes = new LinkedList<>();
     LinkedList< Conta> listaContas = new LinkedList<>();
     LinkedList<Funcionario> listaFuncionarios = new LinkedList<>();
     LinkedList<Administrador> listaAdm= new LinkedList<>();
     Funcionario[] colaboradores = new Funcionario[25];
-    //ArrayList<Funcionario> colaboradores = new ArrayList<>();
             
             
 }

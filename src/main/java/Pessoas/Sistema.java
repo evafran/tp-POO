@@ -12,21 +12,12 @@ package Pessoas;
 public class Sistema implements Listas{
     
     private static int countStatic; //variável static
-    protected int  countProtected;
+    protected int  countProtected;//variável protected
     
-    //métodod para funcionário adicionar um novo cliente 
-    public void adicionarCliente(int id, String nome, String cpf, String dataNascimento, String endereco,
-        String email, String telefone, Sistema s){
-        
-        Cliente cliente = new Cliente(id, nome, cpf, dataNascimento, endereco, email, telefone,s);
-        listaClientes.add(cliente);
-        
-        System.out.println("cliente adicionado com sucesso!");
-        System.out.println(getCount());
-        System.out.println(countProtected);
-    }
+    
     
     public  static void addCount(){
+        
         countStatic+=1;  
        //toda vez que um cliente for instanciado ele vai adicionar + 1 ao contador. 
     }
@@ -37,9 +28,20 @@ public class Sistema implements Listas{
     }
     public static  int getCount(){
         
-        return countStatic;//retornar o contador estático da quantidades de clientes
+        return countStatic;//retorna o contador estático da quantidades de clientes
     }
     
+    //métodod para funcionário adicionar um novo cliente 
+    public void adicionarCliente(int id, String nome, String cpf, String dataNascimento,
+            String endereco,String email, String telefone, Sistema s, Agencia a){
+        
+        Cliente cliente = new Cliente(id, nome, cpf, dataNascimento, endereco, email, telefone, s, a);
+        listaClientes.add(cliente);
+        
+        System.out.printf("\ncliente %s adicionado com sucesso!\n",nome);
+        
+       
+    }
     
     public void editarCliente(int id, String nome, String cpf, String dataNascimento, String endereco,
           String email, String telefone, Cliente cliente){
@@ -53,27 +55,34 @@ public class Sistema implements Listas{
         cliente.setEmail(email);
         cliente.setTelefone(telefone);
         listaClientes.add(cliente);
-        System.out.println("dados atualizados: ");
-        cliente.returnInfos();
+        System.out.printf("\ndados  do cliente %s atualizados: \n",cliente.getNome());
+        cliente.retornarInfos();
         
     }
-    public void removeCliente(Cliente cliente){
+    
+    public void removeCliente(Cliente cliente, Agencia a){
+        
         listaClientes.remove(cliente);
         subCount();
-        System.out.println("cliente removido com sucesso!");
+        a.removerCliente(cliente);
+        System.out.printf("\ncliente %s deletado com sucesso! \n", cliente.getNome());
     }
     
     //métodos para adiconar, editar e remover e funcionários
-    public void adicionarAdm(int idAdm, int id, String nome, String cpf, String dataNascimento, String endereco, String email, String telefone){
+    public void adicionarAdm(int idAdm, int id, String nome, String cpf, String dataNascimento,
+            String endereco, String email, String telefone, Agencia a){
       
-        Administrador adm = new Administrador( idAdm,  id,  nome,cpf, dataNascimento, endereco, email,telefone);
+        Administrador adm = new Administrador( idAdm,  id,  nome,cpf, dataNascimento, endereco,
+                email,telefone, a);
         
         listaAdm.add(adm);
         System.out.println("adicionado com sucesso: ");
-        adm.returnInfos();
+        adm.retornarInfos();
         
     }
-    public void editarAdm(int idAdm, int id, String nome, String cpf, String dataNascimento, String endereco, String email, String telefone,Administrador adm){
+    
+    public void editarAdm(int idAdm, int id, String nome, String cpf, String dataNascimento,
+            String endereco, String email, String telefone,Administrador adm){
         
         listaAdm.remove(adm);
         adm.setIdAdm(idAdm);
@@ -86,15 +95,15 @@ public class Sistema implements Listas{
         adm.setTelefone(telefone);
         listaAdm.add(adm);
         System.out.println("editado com sucesso! ");
-        adm.returnInfos();
+        adm.retornarInfos();
         
     }
     
-    public void removerAdm(Administrador adm){
+    public void removerAdm(Administrador adm, Agencia a){
         
         listaAdm.remove(adm);
         System.out.println("removido com sucesso! ");
-        
+        a.removerAdministrador(adm);
     }
     @Override
     public String toString(){

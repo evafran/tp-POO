@@ -10,6 +10,7 @@ package Pessoas;
  * @author eva
  */
 public abstract  class Pessoa { 
+ 
     private int id;
     private String nome;     
     private String cpf;
@@ -17,18 +18,21 @@ public abstract  class Pessoa {
     private String endereco;           //controle de acesso dos dados 
     private String email;
     private String telefone;
-    //construtor com sete parâmentros
+    
+    //construtor com sete parâmetros
     public Pessoa(int id, String nome, String cpf, String dataNascimento,
-            String endereco,String email, String telefone)
-    {
+            String endereco,String email, String telefone ){
+        
         this.id = id;
-        this.nome = nome; //
+        this.nome = nome; 
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.email = email;
         this.telefone = telefone;
     }
+    
+    //getters e setters
     public void setId( int id){
     
         this.id = id;
@@ -42,7 +46,7 @@ public abstract  class Pessoa {
         
        this.nome = nome;  
         
-        }
+    }
     
     public String getNome(){
     
@@ -96,7 +100,7 @@ public abstract  class Pessoa {
     }
     
 
-    public abstract void AlterarEndereco(); //método abstrato 
+    public abstract void retornarInfos(); 
  
     @Override
     public String toString(){
