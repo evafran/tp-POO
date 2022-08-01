@@ -9,7 +9,7 @@ package Pessoas;
  *
  * @author eva
  */
-public class Cliente extends Pessoa implements Comparable<Cliente>{
+public class Cliente extends Pessoa implements Listas, Comparable<Cliente>{
     
     //construtor e o construtor da superclasse abstrata 
     public Cliente(int id, String nome, String cpf, String dataNascimento, String endereco, 
@@ -19,6 +19,7 @@ public class Cliente extends Pessoa implements Comparable<Cliente>{
         Sistema.addCount();//método de sistema adicionar mais um cliente for instaciado 
         s.countProtected +=1;//cada vez que o cliente for instanciado vai somar mais 1 á quantidade de cliente
         a.setListClientes(this);
+        listaClientes.add(this);
         
     }
 
@@ -47,12 +48,14 @@ public class Cliente extends Pessoa implements Comparable<Cliente>{
     @Override
     public void retornarInfos(){
         
+        System.out.println("\nid: " + Cliente.super.getId());
         System.out.println("nome: "  + Cliente.super.getNome());
         System.out.println("cpf: " + Cliente.super.getCpf());
         System.out.println("data nascimento: " + Cliente.super.getDataNascimento());
         System.out.println("Endereco: " + Cliente.super.getEndereco());
         System.out.println("email: " + Cliente.super.getEmail());
         System.out.println("Telefone: " + Cliente.super.getTelefone());
+        System.out.println("\n");
         
     }
     @Override

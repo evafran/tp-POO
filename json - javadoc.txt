@@ -1,0 +1,3 @@
+arquivos json: sistemabancario/
+
+javadoc: sistemabancario/target/site/apidocs/

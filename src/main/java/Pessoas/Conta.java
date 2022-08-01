@@ -11,14 +11,14 @@ import java.util.ArrayList;
  *
  * @author eva
  */
-public class Conta {
+public class Conta implements Listas{
 
     private int idConta;  //criada a classe conta e o construtor com  sete  parâmentros.
     private String tipoConta;
     private int agencia;
     private int numeroConta;  
     private double saldoConta;
-    private Cliente  cliente;
+    //private Cliente  cliente;
     private String senha;
     private ArrayList<String> extratosBancario = new ArrayList<>();
     
@@ -33,7 +33,8 @@ public class Conta {
         this.saldoConta = saldoConta;
         this.senha = senha;
         a.setListConta(this);
-    
+        listaContas.add(this);
+        
     }
 
     //Os getters e setters permite o acesso a classe conta e os seus atributos.
@@ -57,11 +58,6 @@ public class Conta {
         return saldoConta;
     
     }
-    public Cliente getCliente(){
-
-        return cliente;
-
-    }
 
     public void setIdConta(int idConta) {
         this.idConta = idConta;
@@ -81,10 +77,6 @@ public class Conta {
 
     public void setSaldoConta(double saldoConta) {
         this.saldoConta = saldoConta;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public String getSenha() {
@@ -122,9 +114,9 @@ public class Conta {
         this.saldoConta += valor;
         LocalDate dataDeposito = LocalDate.now();
         String extrato;
-        extrato = "\n data de depósito: " + dataDeposito.toString() +
-                  "\n tipo de transação crédito/transferência: " +
-                  "\n saldo atual R$" + Double.toString(getSaldoConta());
+        extrato = "\ndata de depósito: " + dataDeposito.toString() +
+                  "\ntipo de transação crédito/transferência: " +
+                  "\nsaldo atual R$" + Double.toString(getSaldoConta());
         
         System.out.println(extrato);
         extratosBancario.add(extrato);
@@ -139,17 +131,17 @@ public class Conta {
             conta.setSaldoConta(saldoNovo);
             LocalDate dataTransferencia = LocalDate.now();
             String extrato;
-            extrato = "\n data de transferência: " + dataTransferencia.toString() +
-                    "\n tipo de transação débito/transferência : " +
-                    "\n saldo atual R$" + Double.toString(saldoConta);
+            extrato = "\ndata de transferência: " + dataTransferencia.toString() +
+                    "\ntipo de transação débito/transferência : " +
+                    "\nsaldo atual R$" + Double.toString(saldoConta);
             
             extratosBancario.add(extrato);
             System.out.println(extrato);
             
             String extrato2;
-            extrato2 = "\n data de transferência: " + dataTransferencia.toString() +
-                       "\n tipo de transação crédito/transferência : " +
-                       "\n saldo atual R$" + Double.toString(conta.getSaldoConta());
+            extrato2 = "\ndata de transferência: " + dataTransferencia.toString() +
+                       "\ntipo de transação crédito/transferência : " +
+                       "\nsaldo atual R$" + Double.toString(conta.getSaldoConta());
             
             conta.addExtrato(extrato2);
           //código  para conta em que será créditado 
@@ -184,12 +176,12 @@ public class Conta {
             
     public void exibirInfoConta(){
         
-        System.out.println("idConta: " + getIdConta()); 
+        System.out.println("\nidConta: " + getIdConta()); 
         System.out.println("tipoConta: " + getTipoConta());
         System.out.println("agencia: "  + getAgencia());
         System.out.println("numeroConta: " + getNumeroConta());
         System.out.println("saldoConta: " + getSaldoConta());
-        System.out.println("cliente:"  + getCliente());    
+        System.out.println("\n"); 
     }
     
     public void exibirExtrato(){

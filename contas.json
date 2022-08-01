@@ -1,0 +1,32 @@
+{
+  "idConta": 45,
+  "tipoConta": "conta poupança",
+  "agencia": 74,
+  "numeroConta": 345672,
+  "saldoConta": 900000.0,
+  "senha": "126598",
+  "extratosBancario": []
+}{
+  "idConta": 1,
+  "tipoConta": "corrente",
+  "agencia": 74,
+  "numeroConta": 20309,
+  "saldoConta": 1092414.0,
+  "senha": "3443434",
+  "extratosBancario": [
+    "\nData de transação: 2022-07-31\nTipo de transação: débito/pagamento\nO saldo é R$1092583.0",
+    "\nData de saque: 2022-07-31\nTipo de transação: débito/saque\nSaldo atual é R$1092534.0",
+    "\ndata de transferência: 2022-07-31\ntipo de transação débito/transferência : \nsaldo atual R$1092414.0"
+  ]
+}{
+  "idConta": 3,
+  "tipoConta": "poupança",
+  "agencia": 74,
+  "numeroConta": 22345,
+  "saldoConta": 150.0,
+  "senha": "evcsr",
+  "extratosBancario": [
+    "\ndata de depósito: 2022-07-31\ntipo de transação crédito/transferência: \nsaldo atual R$30.0",
+    "\ndata de transferência: 2022-07-31\ntipo de transação crédito/transferência : \nsaldo atual R$150.0"
+  ]
+}

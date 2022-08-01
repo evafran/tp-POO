@@ -1,0 +1,17 @@
+{
+  "nome": "nubank",
+  "cidade": "Bh",
+  "codigoAgencia": 12345,
+  "listClientes": [],
+  "listFuncionario": [],
+  "listAdm": [],
+  "listConta": []
+}{
+  "nome": "caixa",
+  "cidade": "curvelo",
+  "codigoAgencia": 21,
+  "listClientes": [],
+  "listFuncionario": [],
+  "listAdm": [],
+  "listConta": []
+}

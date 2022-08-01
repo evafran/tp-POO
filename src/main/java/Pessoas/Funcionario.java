@@ -17,14 +17,15 @@ public class Funcionario extends Pessoa implements Listas{
 
        super(id,  nome, cpf, dataNascimento, endereco, email, telefone);
        a.setListFuncionario(this);
+       listaFuncionarios.add(this);
+       
     }
    
     public void criarConta(int idConta, String tipoConta, int agencia, int numeroConta,
-            double saldoConta, Cliente cliente, Funcionario funcionario, Agencia a,String senha){
+            double saldoConta, String senha, Agencia a){
         
         Conta conta = new Conta(idConta, tipoConta, agencia, numeroConta, saldoConta, senha, a);
-        listaContas.add(conta);
-        System.out.println("conta adicionado com sucesso!");
+        System.out.println("\nconta adicionado com sucesso!");
         
     }
     
@@ -33,28 +34,29 @@ public class Funcionario extends Pessoa implements Listas{
     public void removerConta(Conta conta,Agencia a){ 
         
         listaContas.remove(conta);
-        System.out.println("conta removida com sucesso!");
+        System.out.println("\nconta removida com sucesso!");
         a.removerConta(conta);
         
     } 
     
-    public void adicionarAgencia(Agencia a){ 
+    public void adicionarAgencia(Agencia d, String nome,String cidade, int codigoAgencia){ 
        
-        listaAgencias.add(a);
-        System.out.println("agencia adicionado com sucesso!");
+       // listaAgencias.add(a);
+       Agencia a = new Agencia(nome, cidade, codigoAgencia);
+       System.out.println("\nagencia adicionado com sucesso!");
         
     }
     
     public void removerAgencia(Agencia a){
         
         listaAgencias.remove(a);
-        System.out.println("Agência removida com  sucesso! ");
+        System.out.println("\nAgência removida com  sucesso! ");
     }
     
     public void alterarSenha(Conta conta,String senha){
         
         conta.setSenha(senha);
-        System.out.println("senha atualizada com sucesso! ");
+        System.out.println("\nsenha atualizada com sucesso! ");
         
     }
     @Override

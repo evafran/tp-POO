@@ -12,11 +12,13 @@ public class Administrador extends Funcionario implements Listas{
     private int idAdm;
     
     //construtor
-    public Administrador(int idAdm, int id, String nome, String cpf, String dataNascimento, String endereco, String email, String telefone, Agencia a) {
-        super(id, nome, cpf, dataNascimento, endereco, email, telefone, a);
+    public Administrador(int idAdm, int id, String nome, String cpf, String dataNascimento, 
+            String endereco, String email, String telefone, Agencia a) {
         
+        super(id, nome, cpf, dataNascimento, endereco, email, telefone, a);
         this.idAdm = idAdm;
         a.setListAdm(this);
+        listaAdm.add(this);
     }
 
     //getters e setters
@@ -34,7 +36,7 @@ public class Administrador extends Funcionario implements Listas{
         
         Funcionario f = new Funcionario(id,nome,cpf,dataNascimento,endereco,email,telefone,a);
         colaboradores[i] = f;
-        listaFuncionarios.add(f);
+        f.retornarInfos();
              
     }
     
@@ -50,7 +52,7 @@ public class Administrador extends Funcionario implements Listas{
         funcionario.setEmail(email);
         funcionario.setTelefone(telefone);
         listaFuncionarios.add(funcionario);
-        System.out.println("dados atualizados com sucesso!");
+        System.out.println("\ndados atualizados com sucesso!");
         funcionario.retornarInfos();
         
     }
@@ -59,7 +61,7 @@ public class Administrador extends Funcionario implements Listas{
         
         listaFuncionarios.remove(f);
         a.removerFuncionario(f);
-        System.out.printf("funcionário %s removido com sucesso: \n", f.getNome());
+        System.out.printf("\nfuncionário %s removido com sucesso: \n", f.getNome());
           
     }
     

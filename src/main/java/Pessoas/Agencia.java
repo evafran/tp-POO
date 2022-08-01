@@ -26,6 +26,7 @@ public class Agencia implements Listas, Comparable< Agencia>{
         this.nome = nome;
         this.cidade = cidade;
         this.codigoAgencia = codigoAgencia;
+        listaAgencias.add(this);
         
     }
 
@@ -89,22 +90,22 @@ public class Agencia implements Listas, Comparable< Agencia>{
     
     //métodos para remover clientes,funcionários ,conta e administrador
     public void removerCliente(Cliente c){
-        System.out.printf("cliente %s removido com sucesso!", c.getNome());
+        System.out.printf("\ncliente %s removido com sucesso!", c.getNome());
         listClientes.remove(c);
     }
     
     public void removerFuncionario(Funcionario f){
-        System.out.printf("funcionário %s removido com sucesso!", f.getNome());
+        System.out.printf("\nfuncionário %s removido com sucesso!", f.getNome());
         listFuncionario.remove(f);
     }
     
     public void removerAdministrador(Administrador a){
-        System.out.printf("Adminsitrador %s removido com sucesso!", a.getNome());
+        System.out.printf("\nAdminsitrador %s removido com sucesso!", a.getNome());
         listAdm.remove(a);
     }
     
     public void removerConta(Conta c){
-        System.out.printf("conta %s removida com sucesso!", c.getNumeroConta());
+        System.out.printf("\nconta %s removida com sucesso!", c.getNumeroConta());
         listConta.remove(c);
     }
     

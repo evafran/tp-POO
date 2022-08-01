@@ -4,6 +4,11 @@
  */
 package Pessoas;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author eva
@@ -16,7 +21,7 @@ public class Sistema implements Listas{
     
     
     
-    public  static void addCount(){
+    public static void addCount(){
         
         countStatic+=1;  
        //toda vez que um cliente for instanciado ele vai adicionar + 1 ao contador. 
@@ -30,6 +35,7 @@ public class Sistema implements Listas{
         
         return countStatic;//retorna o contador estático da quantidades de clientes
     }
+     
     
     //métodod para funcionário adicionar um novo cliente 
     public void adicionarCliente(int id, String nome, String cpf, String dataNascimento,
@@ -75,7 +81,6 @@ public class Sistema implements Listas{
         Administrador adm = new Administrador( idAdm,  id,  nome,cpf, dataNascimento, endereco,
                 email,telefone, a);
         
-        listaAdm.add(adm);
         System.out.println("adicionado com sucesso: ");
         adm.retornarInfos();
         
@@ -105,11 +110,91 @@ public class Sistema implements Listas{
         System.out.println("removido com sucesso! ");
         a.removerAdministrador(adm);
     }
+    
+    //métodos para salvar os objetos em um json
+    public void jsonClientes()throws IOException{
+        
+        FileWriter fw = new FileWriter("clientes.json"); //o arquivo json será criado no diretório do projeto
+        for(Cliente c: listaClientes){
+            
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            try{
+                
+                String json = gson.toJson(c);
+                fw.write(json);
+                fw.flush();
+                System.out.println(json);
+                
+            }catch (IOException e){
+                System.out.println("erro:" + e);
+            }   
+        } 
+    }
+    
+    public void jsonAgencias()throws IOException{
+        
+        FileWriter fw = new FileWriter("agencias.json");
+        for(Agencia a: listaAgencias){
+            
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            try{
+                
+                String json = gson.toJson(a);
+                fw.write(json);
+                fw.flush();
+                System.out.println(json);
+                
+            }catch (IOException e){
+                System.out.println("erro:" + e);
+            }   
+        } 
+    }
+    
+    public void jsonColaboradores()throws IOException{
+        
+        FileWriter fw = new FileWriter("colaboradores.json");
+        for(Funcionario f: colaboradores){
+            
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            try{
+                
+                String json = gson.toJson(f);
+                fw.write(json);
+                fw.flush();
+                System.out.println(json);
+                
+            }catch (IOException e){
+                System.out.println("erro:" + e);
+            }   
+        } 
+    }
+    
+    public void jsonContas()throws IOException{
+        
+        FileWriter fw = new FileWriter("contas.json");
+        for(Conta co: listaContas){
+            
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            try{
+                
+                String json = gson.toJson(co);
+                fw.write(json);
+                fw.flush();
+                System.out.println(json);
+                
+            }catch (IOException e){
+                System.out.println("erro:" + e);
+            }   
+        } 
+    }
+    
     @Override
     public String toString(){
 
         return String.format( super.toString()); //método tosTRING sobreescrito.
     }
+
+    
 
 }
 
